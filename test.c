@@ -6,7 +6,21 @@
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:27:16 by aigounad          #+#    #+#             */
-/*   Updated: 2023/01/31 12:28:50 by aigounad         ###   ########.fr       */
+/*   Updated: 2023/02/05 00:21:50 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fractol.h"
+
+
+
+int	main()
+{
+
+	t_data data;
+
+	data.mlx_ptr = mlx_init();
+
+	mlx_loop(data.mlx_ptr);
+	return (0);
+}

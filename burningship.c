@@ -1,49 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 09:19:26 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/04 16:32:25 by aigounad         ###   ########.fr       */
+/*   Created: 2023/02/04 20:40:10 by aigounad          #+#    #+#             */
+/*   Updated: 2023/02/04 22:27:52 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	ft_cabs(double re, double im)
+static int	ft_get_max_iter(double	x, double y)
 {
-	return (sqrt(pow(re, 2) + pow(im, 2)));
-}
+	double	re;
+	double	im;
+	double	tmp;
+	int		i;
 
-int	ft_get_max_iter(double re, double im)
-{
-	double	z_re;
-	double	z_im;
-	double	temp;
-	int		max_iter;
-
-	z_re = re;
-	z_im = im;
-	max_iter = 0;
-	while (ft_cabs(z_re, z_im) < 2 && max_iter < MAX_ITERATIONS)
+	i = 0;
+	re = x;
+	im = y;
+	while (ft_cabs(re, im) < 2 && i < MAX_ITERATIONS)
 	{
-		temp = z_re;
-		z_re = (z_re * z_re) - (z_im * z_im) + re;
-		z_im = 2 * temp * z_im + im;
-		max_iter++;
+		tmp = re;
+		re = pow(fabs(re), 2) - pow(fabs(im), 2) + x;
+		im = 2 * fabs(tmp) * fabs(im) + y;
+		i++;
 	}
-	return (max_iter);
+	return (i);
 }
 
-void	ft_draw_mandelbrot(t_data *data)
+void	ft_draw_burningship(t_data *data)
 {
-	int		x;
-	int		y;
-	double	a;
-	double	b;
-	int		max_iter;
+	int	x;
+	int	y;
+	double	re;
+	double	im;
+	int	max_iter;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -51,9 +46,9 @@ void	ft_draw_mandelbrot(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			a = data->re_s + (x / (double)WIDTH) * (data->re_e - data->re_s);
-			b = data->im_s + (y / (double)HEIGHT) * (data->im_e - data->im_s);
-			max_iter = ft_get_max_iter(a, b);
+			re = data->re_s + (x / (double)WIDTH) * (data->re_e - data->re_s);
+			im = data->im_s + (y / (double)HEIGHT) * (data->im_e - data->im_s);
+			max_iter = ft_get_max_iter(re, im);
 			my_mlx_pixel_put(data, x, y, ft_get_color(max_iter));
 			x++;
 		}
