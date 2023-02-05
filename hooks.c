@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_window.c                                      :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 09:27:55 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/05 01:06:48 by aigounad         ###   ########.fr       */
+/*   Created: 2023/01/29 16:29:31 by aigounad          #+#    #+#             */
+/*   Updated: 2023/02/05 02:15:07 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	handel_escape(int key, t_data *data)
+int	key_hook(int key, t_data *data)
 {
-	double scale;
-	
+	double	scale;
+
 	scale = 0.1;
 	if (key == 53)
 		window_close(data);
@@ -42,16 +42,19 @@ int	handel_escape(int key, t_data *data)
 	return (0);
 }
 
-// int	handel_keyrelease(int key, t_data	*data)
-// {
-// 	(void)data;
-// 	printf("keyrelease %d\n", key);
-// 	return (0);
-// }
-
-int	window_close(t_data *data)
+int	mouse_hook(int button, int x, int y, t_data *data)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->img);
-	exit (0);
+	double	a;
+	double	b;
+
+	if (button == 1)
+	{
+		a = data->re_s + (x / (double)WIDTH) * (data->re_e - data->re_s);
+		b = data->im_e - (y / (double)HEIGHT) * (data->im_e - data->im_s);
+		data->mouse.x = a;
+		data->mouse.y = b;
+	}
+	if (button == 4 || button == 5)
+		zoom(button, a, b, data);
+	return (0);
 }

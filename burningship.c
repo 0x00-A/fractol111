@@ -6,7 +6,7 @@
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:40:10 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/04 22:27:52 by aigounad         ###   ########.fr       */
+/*   Updated: 2023/02/05 02:09:24 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static int	ft_get_max_iter(double	x, double y)
 
 void	ft_draw_burningship(t_data *data)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	double	re;
 	double	im;
-	int	max_iter;
+	int		max_iter;
 
 	y = 0;
 	while (y < HEIGHT)

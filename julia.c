@@ -6,7 +6,7 @@
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:26:30 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/04 19:21:09 by aigounad         ###   ########.fr       */
+/*   Updated: 2023/02/05 02:15:40 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static int	ft_get_max_iter(t_data *data, double x, double y)
 
 void	ft_draw_julia(t_data *data)
 {
-	int 	max_iter;
+	int		max_iter;
 	int		x;
-	int 	y;
+	int		y;
 
 	y = 0;
 	while (y < HEIGHT)

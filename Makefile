@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
 NAME = fractol
-SRC = main.c mandelbrot.c julia.c burningship.c color.c window.c exit_window.c zoom.c
+SRC = main.c mandelbrot.c julia.c burningship.c color.c window.c fractol_utils.c zoom.c hooks.c
 # SRC = test.c
 OBJ = $(SRC:.c=.o)
 
