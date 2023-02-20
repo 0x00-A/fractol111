@@ -6,7 +6,7 @@
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:19:26 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/04 16:32:25 by aigounad         ###   ########.fr       */
+/*   Updated: 2023/02/21 00:16:39 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	ft_cabs(double re, double im)
 {
-	return (sqrt(pow(re, 2) + pow(im, 2)));
+	return (pow(re, 2) + pow(im, 2));
 }
 
 int	ft_get_max_iter(double re, double im)
@@ -27,7 +27,7 @@ int	ft_get_max_iter(double re, double im)
 	z_re = re;
 	z_im = im;
 	max_iter = 0;
-	while (ft_cabs(z_re, z_im) < 2 && max_iter < MAX_ITERATIONS)
+	while (ft_cabs(z_re, z_im) < 4 && max_iter < MAX_ITERATIONS)
 	{
 		temp = z_re;
 		z_re = (z_re * z_re) - (z_im * z_im) + re;

@@ -6,7 +6,7 @@
 /*   By: aigounad <aigounad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:26:30 by aigounad          #+#    #+#             */
-/*   Updated: 2023/02/05 02:15:40 by aigounad         ###   ########.fr       */
+/*   Updated: 2023/02/21 00:18:35 by aigounad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_get_max_iter(t_data *data, double x, double y)
 	a = data->re_s + (x / (double)WIDTH) * (data->re_e - data->re_s);
 	b = data->im_e - (y / (double)HEIGHT) * (data->im_e - data->im_s);
 	i = 0;
-	while (ft_cabs(a, b) < 2 && i < MAX_ITERATIONS)
+	while (ft_cabs(a, b) < 4 && i < MAX_ITERATIONS)
 	{
 		tmp = a;
 		a = pow(a, 2) - pow(b, 2) + data->mouse.x;
